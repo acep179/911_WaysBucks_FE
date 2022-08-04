@@ -28,7 +28,9 @@ function Navbar() {
             {isLogin ? (
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0 position-relative d-flex align-items-center">
                 <li className="nav-item cursor-pointer">
-                  <img src={iconCart} alt="cart" />
+                  <Link to="/cart">
+                    <img src={iconCart} alt="cart" />
+                  </Link>
                 </li>
 
                 <li>

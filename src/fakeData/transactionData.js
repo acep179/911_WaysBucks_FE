@@ -1,5 +1,6 @@
 import palmSugar from './../assets/img/palm-sugar.jpg'
 import greenTea from './../assets/img/green-tea.jpg'
+import hanamiLatte from './../assets/img/hanami-latte.jpg'
 
 const transactionData =[
     {
@@ -55,10 +56,10 @@ const transactionData =[
         subTotal: 69000,
         product:[
             {
-                id: 1,
-                name: 'Ice Coffee Palm Sugar',
-                price: 33000,
-                img: palmSugar,
+                id: 3,
+                name: 'HanamiLatte',
+                price: 29000,
+                img: hanamiLatte,
                 toping: [
                     {
                         id: 5,

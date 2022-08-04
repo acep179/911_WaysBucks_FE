@@ -142,3 +142,18 @@ a{
   position: absolute;
   right: 0;
 }
+
+/*. Cart */
+
+.cart{
+  border-top: 1px solid var(--color-pri);
+  border-bottom: 1px solid var(--color-pri);
+}
+
+.cart-image{
+  width: 80px;
+  aspect-ratio: 1/1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+}
