@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import heroBg from './../assets/img/hero-bg.jpg'
 import heroImg from './../assets/img/food.png'
@@ -31,7 +32,9 @@ function Home() {
                 <div className='card bg-pink p-0'>
                   <img src={item.img} class="card-img-top w-100 mb-2" alt={item.name} />
                   <div class="card-body p-3">
-                    <h5 class="card-title mb-2">{item.name}</h5>
+                    <Link to={`/detail-product/${item.id}`}>
+                      <h5 class="card-title mb-2 text-red">{item.name}</h5>
+                    </Link>
                     <p class="card-text mb-2">{item.price}</p>
                   </div>
                 </div>

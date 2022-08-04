@@ -3,9 +3,9 @@ import React from 'react'
 function AuthModal() {
   return (
     <div>
-      <div class="modal fade" id="login" aria-hidden="true" aria-labelledby="loginLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
+      <div className="modal fade" id="login" aria-hidden="true" aria-labelledby="loginLabel" tabIndex="-1">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
             <div className="modal-body">
               <h1 className="modal-title text-red bold mb-4" id="login">Login</h1>
               <form>
@@ -25,9 +25,9 @@ function AuthModal() {
         </div>
       </div>
 
-      <div class="modal fade" id="register" aria-hidden="true" aria-labelledby="loginLabel2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
+      <div className="modal fade" id="register" aria-hidden="true" aria-labelledby="loginLabel2" tabIndex="-1">
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
             <div className="modal-body">
               <h1 className="modal-title text-red bold mb-4" id="register">Register</h1>
               <form id="register" >

@@ -20,6 +20,10 @@ code {
     monospace;
 }
 
+a{
+  text-decoration: none;
+}
+
 .text-red{
   color: var(--color-pri) !important;
 }

@@ -46,10 +46,10 @@ function Navbar() {
                           </Link>
                         </div>
 
-                        <p className="d-flex align-items-center p-3">
+                        <span className="d-flex align-items-center p-3">
                           <img src={logoutIcon} alt="logout icon" />
                           <p className="ms-3">Logout</p>
-                        </p>
+                        </span>
 
                       </div>
                     ) : (
@@ -60,10 +60,10 @@ function Navbar() {
                             <p className="ms-3">Profile</p>
                           </Link>
                         </div>
-                        <p className="d-flex align-items-center p-3">
+                        <span className="d-flex align-items-center p-3">
                           <img src={logoutIcon} alt="logout icon" />
                           <p className="ms-3">Logout</p>
-                        </p>
+                        </span>
                       </div>
                     )}
                   </div>
