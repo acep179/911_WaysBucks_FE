@@ -27,6 +27,12 @@ a{
 .text-red{
   color: var(--color-pri) !important;
 }
+.text-brown{
+  color: rgba(97, 61, 43, 1) !important;
+}
+.text-small{
+  font-size: .7rem;
+}
 
 .bg-pink{
   background-color: var(--color-semi-red);
