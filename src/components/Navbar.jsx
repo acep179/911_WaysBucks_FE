@@ -11,7 +11,7 @@ import logoutIcon from "./../assets/img/logout_icon.png"
 function Navbar() {
 
   let isLogin = true
-  let isAdmin = false
+  let isAdmin = true
 
   return (
     <div>

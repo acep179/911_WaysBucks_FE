@@ -19,7 +19,7 @@ const productsData = [
     },
     {
         id: 3,
-        name: 'HanamiLatte',
+        name: 'Hanami Latte',
         price: 29000,
         img: hanamiLatte
     },
