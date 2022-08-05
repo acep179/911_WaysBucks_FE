@@ -43,7 +43,7 @@ function Navbar() {
                             <img src={userIcon} alt="profile icon" />
                             <p className="ms-3">Add Product</p>
                           </Link>
-                          <Link to='add-topping' className="d-flex align-items-center p-3">
+                          <Link to='add-toping' className="d-flex align-items-center p-3">
                             <img src={userIcon} alt="profile icon" />
                             <p className="ms-3">Add Topping</p>
                           </Link>

@@ -1,8 +1,17 @@
 import React from 'react'
 
+import toping from './../assets/img/kiwi-popping-pearl.png'
+
+import { AddForm } from './../components'
+
 function AddTopingAdmin() {
   return (
-    <div>AddTopingAdmin</div>
+    <div className='container d-flex justify-content-center'>
+      <div className='row justify-content-between' style={{ marginTop: 90, width: '90%' }}>
+        <AddForm name='Toping' />
+        <img className='col-5' src={toping} alt="Add Product" />
+      </div>
+    </div>
   )
 }
 

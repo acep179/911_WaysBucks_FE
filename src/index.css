@@ -157,3 +157,22 @@ a{
   background-position: center;
   border-radius: 10px;
 }
+
+/*. Form */
+
+.input-file-red{
+  background-color: rgba(224, 200, 200, 0.25);
+  border-top: solid 3px var(--color-pri);
+  border-bottom: solid 3px var(--color-pri);
+  border-left: solid 3px var(--color-pri);
+  border-right: none;
+  color:rgba(104, 50, 50, 0.5);
+}
+
+.label-file{
+  background-color: rgba(224, 200, 200, 0.25);
+  border-top: solid 3px var(--color-pri);
+  border-bottom: solid 3px var(--color-pri);
+  border-right: solid 3px var(--color-pri);
+  border-left: none;
+}

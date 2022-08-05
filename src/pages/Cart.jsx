@@ -2,7 +2,6 @@ import React from 'react'
 
 import transactionData from './../fakeData/transactionData'
 
-import kopi from './../assets/img/large_palm.jpg'
 import bin from './../assets/img/bin.png'
 
 function Cart() {

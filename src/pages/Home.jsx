@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { AuthModal } from '../components'
+
 import heroBg from './../assets/img/hero-bg.jpg'
 import heroImg from './../assets/img/food.png'
 
@@ -9,6 +11,7 @@ import productsData from './../fakeData/productsData'
 function Home() {
   return (
     <div className='container'>
+      <AuthModal />
       <header className='mb-5' style={{ marginTop: 90 }}>
         <div className='mx-auto position-relative' style={{ width: '90%' }}>
           <div className='hero row align-items-center' style={{ backgroundImage: `url(${heroBg})` }}>
