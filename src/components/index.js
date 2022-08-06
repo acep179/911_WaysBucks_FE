@@ -4,4 +4,6 @@ import AuthModal from "./AuthModal";
 import TransactionCard from './TransactionCard'
 import AddForm from './AddForm'
 
-export {AddForm, Navbar, TransactionCard, AuthModal}
+import PrivateRoute from "./PrivateRoute";
+
+export {AddForm, Navbar, TransactionCard, AuthModal, PrivateRoute}

@@ -7,8 +7,12 @@ import heroBg from './../assets/img/hero-bg.jpg'
 import heroImg from './../assets/img/food.png'
 
 import productsData from './../fakeData/productsData'
+// import { UserContext } from '../context/userContext'
 
 function Home() {
+
+  // const [state] = useContext(UserContext)
+
   return (
     <div className='container'>
       <AuthModal />
@@ -31,14 +35,14 @@ function Home() {
         <div className='row'>
           {productsData.map((item) => {
             return (
-              <div className='col-3 mb-5 px-3'>
+              <div key={item.id} className='col-3 mb-5 px-3'>
                 <div className='card bg-pink p-0'>
-                  <img src={item.img} class="card-img-top w-100 mb-2" alt={item.name} />
-                  <div class="card-body p-3">
+                  <img src={item.img} className="card-img-top w-100 mb-2" alt={item.name} />
+                  <div className="card-body p-3">
                     <Link to={`/detail-product/${item.id}`}>
-                      <h5 class="card-title mb-2 text-red">{item.name}</h5>
+                      <h5 className="card-title mb-2 text-red">{item.name}</h5>
                     </Link>
-                    <p class="card-text mb-2">{item.price}</p>
+                    <p className="card-text mb-2">{item.price}</p>
                   </div>
                 </div>
               </div>

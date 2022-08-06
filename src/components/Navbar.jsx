@@ -1,5 +1,7 @@
-import { React } from "react"
+import { React, useContext } from "react"
 import { Link } from 'react-router-dom'
+
+import { UserContext } from "../context/userContext"
 
 import logo from "../assets/img/waysbuck_logo.png"
 import iconCart from "./../assets/img/cart_icon.png"
@@ -10,8 +12,16 @@ import logoutIcon from "./../assets/img/logout_icon.png"
 
 function Navbar() {
 
-  let isLogin = true
-  let isAdmin = true
+  const [state, dispatch] = useContext(UserContext)
+
+  const isLogin = state.isLogin
+  const isAdmin = state.user.status === 'admin' ? true : false
+
+  const logout = () => {
+    dispatch({
+      type: 'LOGOUT'
+    })
+  }
 
   return (
     <div>
@@ -51,7 +61,7 @@ function Navbar() {
 
                         <span className="d-flex align-items-center p-3">
                           <img src={logoutIcon} alt="logout icon" />
-                          <p className="ms-3">Logout</p>
+                          <p className="ms-3" onClick={logout}>Logout</p>
                         </span>
 
                       </div>
@@ -65,7 +75,7 @@ function Navbar() {
                         </div>
                         <span className="d-flex align-items-center p-3">
                           <img src={logoutIcon} alt="logout icon" />
-                          <p className="ms-3">Logout</p>
+                          <p className="ms-3" onClick={logout}>Logout</p>
                         </span>
                       </div>
                     )}

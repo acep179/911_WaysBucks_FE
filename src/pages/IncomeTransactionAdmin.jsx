@@ -2,29 +2,6 @@ import React from 'react'
 
 import incomeTransactionData from './../fakeData/incomeTransactionData'
 
-const statusTd = (status) => {
-  if (status === "Waiting Approve") {
-    return (<td className='text-warning'>{status}</td>)
-  } else if (status === "Success") {
-    return (<td className='text-success'>{status}</td>)
-  } else if (status === "Cancel") {
-    return (<td className='text-danger'>{status}</td>)
-  } else if (status === "On The Way") {
-    return (<td className='text-info'>{status}</td>)
-  }
-}
-
-let incomeTransaction = incomeTransactionData.map((item) => {
-  return {
-    ...item,
-    status: statusTd(item.status)
-  }
-})
-
-
-
-
-console.log(incomeTransaction)
 
 function IncomeTransactionAdmin() {
   return (
@@ -45,15 +22,20 @@ function IncomeTransactionAdmin() {
             </tr>
           </thead>
           <tbody>
-            {incomeTransaction.map((item, index) => {
+            {incomeTransactionData.map((item, index) => {
               return (
-                <tr>
+                <tr key={item.id}>
                   <td>{index + 1}</td>
                   <td>{item.name}</td>
                   <td>{item.address}</td>
                   <td>{item.postCode}</td>
                   <td className='text-primary'>{item.income}</td>
-                  {item.status}
+                  <td className={`text-${item.status === 'Waiting Approve' ? 'warning' :
+                    item.status === 'Success' ? 'success' :
+                      item.status === 'Cancel' ? 'danger' : 'info'
+                    }`}>
+                    {item.status}
+                  </td>
                 </tr>
               )
             })}
