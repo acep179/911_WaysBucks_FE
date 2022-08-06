@@ -24,16 +24,19 @@ function DetailProduct() {
           <p>{product[0]?.price}</p>
           <div>
             <h5>Toping</h5>
-            <div className='row'>
+            <form className='row'>
               {topingData.map((item) => {
                 return (
                   <div className='col-3 d-flex flex-column align-items-center text-center mt-4 mb-2' key={item.id}>
-                    <img className='mb-2' src={item.img} alt={item.name} width={60} />
-                    <p>{item.name} </p>
+                    <input className='toping-checkbox' type="checkbox" name={item.name} id={`toping-${item.id}`} />
+                    <label htmlFor={`toping-${item.id}`}>
+                      <img className='mb-2' src={item.img} alt={item.name} width={60} />
+                      <p>{item.name}</p>
+                    </label>
                   </div>
                 )
               })}
-            </div>
+            </form>
           </div>
           <div className='d-flex justify-content-between'>
             <h5>Total</h5>

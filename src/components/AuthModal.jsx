@@ -8,7 +8,6 @@ function AuthModal() {
   const [state, dispatch] = useContext(UserContext)
   const [message, setMessage] = useState(null)
 
-
   //. Login 
   const [formLogin, setFormLogin] = useState({
     loginEmail: '',
@@ -43,7 +42,11 @@ function AuthModal() {
         user: response
       }
     } else {
-      response = { status: 'failed' }
+      setMessage(
+        <div class="alert alert-danger" role="alert">
+          Password Salah!
+        </div>
+      )
     }
 
     if (response.status === 'success') {
@@ -56,6 +59,7 @@ function AuthModal() {
         loginEmail: '',
         loginPassword: '',
       })
+
     }
     console.log(state)
 
@@ -82,7 +86,7 @@ function AuthModal() {
                   <input type="password" className="form-control input-red" id="loginPassword" name="loginPassword" value={loginPassword} onChange={handleChangeLogin} placeholder="Password" />
                 </div>
                 <div className="d-grid gap-2 mb-3">
-                  <button className="btn btn-red">Login</button>
+                  <button className="btn btn-red" data-bs-dismiss="modal">Login</button>
                 </div>
               </form>
 

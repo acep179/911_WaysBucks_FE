@@ -1,11 +1,14 @@
 import React from 'react'
 
+import { AuthModal } from '../components'
+
 import incomeTransactionData from './../fakeData/incomeTransactionData'
 
 
 function IncomeTransactionAdmin() {
   return (
     <div className='container d-flex justify-content-center'>
+      <AuthModal />
       <div style={{ marginTop: 90, width: '90%' }}>
 
         <h3 className='text-red mb-4'>Income Transaction</h3>

@@ -7,12 +7,8 @@ import heroBg from './../assets/img/hero-bg.jpg'
 import heroImg from './../assets/img/food.png'
 
 import productsData from './../fakeData/productsData'
-// import { UserContext } from '../context/userContext'
 
 function Home() {
-
-  // const [state] = useContext(UserContext)
-
   return (
     <div className='container'>
       <AuthModal />

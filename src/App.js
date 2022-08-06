@@ -17,11 +17,11 @@ function App() {
       <Routes>
         <Route path="/" element={ isLogin ? (isAdmin ? <IncomeTransactionAdmin/> : <Home />) : <Home/>} />
         <Route exact path="/" element={<PrivateRoute />}>
-        <Route path="/add-product" element={<AddProductAdmin />} />
-        <Route path="/add-toping" element={<AddTopingAdmin />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/detail-product/:id" element={<DetailProduct />} />
-        <Route path="/profile" element={<Profile />} />
+          <Route path="/add-product" element={<AddProductAdmin />} />
+          <Route path="/add-toping" element={<AddTopingAdmin />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/detail-product/:id" element={<DetailProduct />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </>
