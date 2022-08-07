@@ -15,7 +15,9 @@ function Navbar() {
   const [state, dispatch] = useContext(UserContext)
 
   const isLogin = state.isLogin
-  const isAdmin = state.user.status === 'admin' ? true : false
+  const isAdmin = state.user[0].status === 'admin' ? true : false
+
+  console.log(isAdmin)
 
   const logout = () => {
     dispatch({
@@ -36,16 +38,13 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
             {isLogin ? (
-              <ul className="navbar-nav ms-auto mb-2 mb-lg-0 position-relative d-flex align-items-center">
-                <li className="nav-item cursor-pointer">
-                  <Link to="/cart">
-                    <img src={iconCart} alt="cart" />
-                  </Link>
-                </li>
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0 position-relative ">
 
-                <li>
-                  <div className="rounded-circle nav-photo ms-3" style={{ backgroundImage: `url(${userPhoto})` }}>
-                    {isAdmin ? (
+                {isAdmin ? (
+                  <li className="nav-item dropdown">
+                    <div role="button" className="rounded-circle nav-photo ms-3" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundImage: `url(${state.user[0].photo})` }}>
+                    </div>
+                    <div className="dropdown-menu">
                       <div className="menu-drop" style={{ width: 300 }}>
 
                         <div>
@@ -61,27 +60,47 @@ function Navbar() {
 
                         <span className="d-flex align-items-center p-3">
                           <img src={logoutIcon} alt="logout icon" />
-                          <p className="ms-3" onClick={logout}>Logout</p>
+                          <p className="ms-3 cursor-pointer" onClick={logout}>Logout</p>
                         </span>
 
                       </div>
-                    ) : (
-                      <div className="menu-drop">
-                        <div>
-                          <Link to='profile' className="d-flex align-items-center p-3">
-                            <img src={userIcon} alt="profile icon" />
-                            <p className="ms-3">Profile</p>
-                          </Link>
-                        </div>
-                        <span className="d-flex align-items-center p-3">
-                          <img src={logoutIcon} alt="logout icon" />
-                          <p className="ms-3" onClick={logout}>Logout</p>
-                        </span>
+                    </div>
+                  </li>
+                ) : (
+                  <div className="d-flex align-items-center">
+                    <li className="nav-item cursor-pointer">
+                      <Link to="/cart">
+                        <img src={iconCart} alt="cart" />
+                      </Link>
+                    </li>
+
+                    <li className="nav-item dropdown">
+                      <div role="button" className="rounded-circle nav-photo ms-3" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundImage: `url(${state.user[0].photo})` }}>
                       </div>
-                    )}
+                      <div className="dropdown-menu">
+
+
+                        <div className="menu-drop">
+                          <div>
+                            <Link to='/profile' className="d-flex align-items-center p-3">
+                              <img src={userIcon} alt="profile icon" />
+                              <p className="ms-3">Profile</p>
+                            </Link>
+                          </div>
+                          <span className="d-flex align-items-center p-3">
+                            <img src={logoutIcon} alt="logout icon" />
+                            <p className="ms-3 cursor-pointer" onClick={logout}>Logout</p>
+                          </span>
+                        </div>
+
+
+                      </div>
+                    </li>
                   </div>
-                </li>
+                )}
+
               </ul>
+
             ) : (
 
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -99,9 +118,9 @@ function Navbar() {
 
             )}
           </div>
-        </div>
-      </nav>
-    </div>
+        </div >
+      </nav >
+    </div >
   )
 }
 

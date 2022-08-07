@@ -1,10 +1,11 @@
+import acepPhoto from './../assets/img/acep.jpg'
 import userPhoto from './../assets/img/user_photo.png'
 
 const userData = [
     {
         id: 1,
         name: 'Acep Awaludin',
-        photo: userPhoto,
+        photo: acepPhoto,
         email: 'acep@mail.com',
         password: '1234',
         status: 'admin'
@@ -12,7 +13,7 @@ const userData = [
     {
         id: 2,
         name: 'Rifqi Alfian',
-        photo: null,
+        photo: userPhoto,
         email: 'alfian@mail.com',
         password: '1234',
         status: 'customer'

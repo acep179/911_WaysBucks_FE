@@ -86,18 +86,13 @@ a{
   cursor: pointer;
 }
 
-.nav-photo:hover .menu-drop{
-  display: block;
-}
-
+/*. Dropdown */
 .menu-drop{
   background-color: white;
   position: absolute;
-  top: 60px;
-  right: -5px;
+  right: 90px;
   border-radius: 10px;
   box-shadow: 2px 2px 20px 0px rgba(0,0,0,0.5);
-  display: none;
 }
 
 .menu-drop p {
@@ -129,6 +124,12 @@ a{
   right: 10px;
 }
 
+.dropdown-menu{
+  background: transparent;
+  border: none;
+}
+
+/*. Hero */
 .hero{
   width: 90%;
   height: 400px;
@@ -175,6 +176,7 @@ a{
   border-bottom: solid 3px var(--color-pri);
   border-right: solid 3px var(--color-pri);
   border-left: none;
+  cursor: pointer;
 }
 
 /*. Checkbox */
