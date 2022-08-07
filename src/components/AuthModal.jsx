@@ -32,7 +32,7 @@ function AuthModal() {
 
     if (response.length === 0) {
       setMessage(
-        <div class="alert alert-danger" role="alert">
+        <div className="alert alert-danger" role="alert">
           Email Belum Terdaftar!
         </div>
       )
@@ -43,7 +43,7 @@ function AuthModal() {
       }
     } else {
       setMessage(
-        <div class="alert alert-danger" role="alert">
+        <div className="alert alert-danger" role="alert">
           Password Salah!
         </div>
       )

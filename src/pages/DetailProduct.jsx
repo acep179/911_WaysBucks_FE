@@ -22,32 +22,34 @@ function DetailProduct() {
         <div className='col-7 text-red'>
           <h1 >{product[0]?.name}</h1>
           <p>{product[0]?.price}</p>
-          <div>
-            <h5>Toping</h5>
-            <form className='row'>
-              {topingData.map((item) => {
-                return (
-                  <div className='col-3 d-flex flex-column align-items-center text-center mt-4 mb-2' key={item.id}>
-                    <input className='toping-checkbox' type="checkbox" name={item.name} id={`toping-${item.id}`} />
-                    <label htmlFor={`toping-${item.id}`}>
-                      <img className='mb-2' src={item.img} alt={item.name} width={60} />
-                      <p>{item.name}</p>
+          <form>
+            <div>
+              <h5>Toping</h5>
+              <div className='row'>
+                {topingData.map((item) => {
+                  return (
+                    <label className='toping-checkbox col-3 d-flex flex-column align-items-center text-center mt-4 mb-2' key={item.id}>
+                      <input type="checkbox" name={item.name} id={`toping-${item.id}`} />
+                      <img className='mb-2' src={item.img} alt={item.name} width={75} />
+                      <p>{item.name}
+                      </p>
+                      <span className='checkmark'></span>
                     </label>
-                  </div>
-                )
-              })}
-            </form>
-          </div>
-          <div className='d-flex justify-content-between'>
-            <h5>Total</h5>
-            <h5>{product[0]?.price}</h5>
-          </div>
-          <div className='d-grid gap-2'>
-            <button className='btn btn-red d-grid gap-2'>Add Chart</button>
-          </div>
+                  )
+                })}
+              </div>
+            </div>
+            <div className='d-flex justify-content-between'>
+              <h5>Total</h5>
+              <h5>{product[0]?.price}</h5>
+            </div>
+            <div className='d-grid gap-2'>
+              <button className='btn btn-red d-grid gap-2'>Add Chart</button>
+            </div>
+          </form>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
