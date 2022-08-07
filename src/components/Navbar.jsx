@@ -5,7 +5,6 @@ import { UserContext } from "../context/userContext"
 
 import logo from "../assets/img/waysbuck_logo.png"
 import iconCart from "./../assets/img/cart_icon.png"
-import userPhoto from "./../assets/img/user_photo.png"
 import userIcon from "./../assets/img/user_icon.png"
 import logoutIcon from "./../assets/img/logout_icon.png"
 
@@ -16,8 +15,6 @@ function Navbar() {
 
   const isLogin = state.isLogin
   const isAdmin = state.user[0].status === 'admin' ? true : false
-
-  console.log(isAdmin)
 
   const logout = () => {
     dispatch({
@@ -104,7 +101,7 @@ function Navbar() {
 
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <button type="button" className="btn btn-reverse-red px-4 py-1" data-bs-toggle="modal" data-bs-target="#login">
+                  <button id="loginButton" type="button" className="btn btn-reverse-red px-4 py-1" data-bs-toggle="modal" data-bs-target="#login">
                     Login
                   </button>
                 </li>

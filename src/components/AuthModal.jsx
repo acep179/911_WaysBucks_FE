@@ -60,8 +60,8 @@ function AuthModal() {
         loginPassword: '',
       })
 
+      console.log(state)
     }
-    console.log(state)
 
   }
 

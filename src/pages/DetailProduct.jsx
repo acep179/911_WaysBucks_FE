@@ -1,19 +1,47 @@
-import { React } from 'react'
+import { React, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import productsData from './../fakeData/productsData'
 import topingData from '../fakeData/topingData'
 
 
+const topingPrice = [0, 0, 0, 0, 0, 0, 0, 0]
 function DetailProduct() {
 
   const { id } = useParams()
-  console.log(id)
+
   const product = productsData.filter((item, index) => {
     return item.id === Number(id)
   })
 
-  console.log(product)
+  const [form, setForm] = useState([0, 0, 0, 0, 0, 0, 0, 0])
+  const [totalPrice, setTotalPrice] = useState(product[0].price)
+
+
+  const handleOnChange = (e) => {
+
+    if (e.target.checked) {
+      setForm(form.splice(e.target.id - 1, 1, Number(e.target.value)))
+    } else {
+      setForm(form.splice(e.target.id - 1, 1, 0))
+    }
+
+    setForm(topingPrice)
+    setTotalPrice(total(form))
+  }
+
+  const total = (array) => {
+    let sum = 0;
+
+    array.forEach(item => {
+      sum += item;
+    });
+
+    sum += product[0].price
+    return sum;
+  }
+
+
 
   return (
     <div className='container d-flex justify-content-center'>
@@ -29,7 +57,7 @@ function DetailProduct() {
                 {topingData.map((item) => {
                   return (
                     <label className='toping-checkbox col-3 d-flex flex-column align-items-center text-center mt-4 mb-2' key={item.id}>
-                      <input type="checkbox" name={item.name} id={`toping-${item.id}`} />
+                      <input type="checkbox" name={item.name} id={item.id} onChange={handleOnChange} value={item.price} />
                       <img className='mb-2' src={item.img} alt={item.name} width={75} />
                       <p>{item.name}
                       </p>
@@ -41,7 +69,7 @@ function DetailProduct() {
             </div>
             <div className='d-flex justify-content-between'>
               <h5>Total</h5>
-              <h5>{product[0]?.price}</h5>
+              <h5>{totalPrice}</h5>
             </div>
             <div className='d-grid gap-2'>
               <button className='btn btn-red d-grid gap-2'>Add Chart</button>
