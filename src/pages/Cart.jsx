@@ -10,6 +10,21 @@ function Cart() {
     <div className='container d-flex justify-content-center'>
       <Navbar />
       <div className='text-red' style={{ marginTop: 90, width: '90%' }}>
+
+        <div class="modal fade" id="thanksModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content thanks-message">
+
+              <div class="modal-body">
+                <p>Thank you for ordering in us, please wait to verify your order</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
         <h3 >My Cart</h3>
         <div className='row justify-content-between'>
           <p>Review Your Order</p>
@@ -69,7 +84,7 @@ function Cart() {
             </div>
 
             <div class="d-grid gap-2 mt-5">
-              <button class="btn btn-red" type="button">Pay</button>
+              <button class="btn btn-red" type="button" data-bs-toggle="modal" data-bs-target="#thanksModal">Pay</button>
             </div>
 
           </div>

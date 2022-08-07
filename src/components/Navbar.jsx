@@ -71,8 +71,8 @@ function Navbar(props) {
                   </li>
                 ) : (
                   <div className="d-flex align-items-center">
-                    <li className="nav-item cursor-pointer position-relative">
-                      <Link to="/cart">
+                    <li className="nav-item cursor-pointer">
+                      <Link className="position-relative" to="/cart">
                         <img src={iconCart} alt="cart" />
                         {cartTotal == undefined ? <p></p> : <p className="cart-total">{cartTotal}</p>}
                       </Link>
