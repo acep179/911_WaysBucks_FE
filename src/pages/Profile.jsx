@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { TransactionCard } from '../components'
+import { Navbar, TransactionCard } from '../components'
 import { UserContext } from '../context/userContext'
 
 import transactionData from './../fakeData/transactionData'
@@ -10,6 +10,7 @@ function Profile() {
 
   return (
     <div className='container d-flex justify-content-center'>
+      <Navbar />
       <div className='row' style={{ marginTop: 90, width: '90%' }}>
         <div className='col-5'>
           <h3 className='text-red mb-4'>My Profile</h3>

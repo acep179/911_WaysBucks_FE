@@ -1,4 +1,4 @@
-import { React, useContext } from "react"
+import { React, useContext, useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
 
 import { UserContext } from "../context/userContext"
@@ -9,9 +9,10 @@ import userIcon from "./../assets/img/user_icon.png"
 import logoutIcon from "./../assets/img/logout_icon.png"
 
 
-function Navbar() {
+function Navbar(props) {
 
   const [state, dispatch] = useContext(UserContext)
+  let [cartTotal, setCartTotal] = useState()
 
   const isLogin = state.isLogin
   const isAdmin = state.user[0].status === 'admin' ? true : false
@@ -21,6 +22,12 @@ function Navbar() {
       type: 'LOGOUT'
     })
   }
+
+  useEffect(() => {
+    setCartTotal(props.cartNum)
+  }, [props])
+
+  console.log(cartTotal)
 
   return (
     <div>
@@ -64,9 +71,10 @@ function Navbar() {
                   </li>
                 ) : (
                   <div className="d-flex align-items-center">
-                    <li className="nav-item cursor-pointer">
+                    <li className="nav-item cursor-pointer position-relative">
                       <Link to="/cart">
                         <img src={iconCart} alt="cart" />
+                        {cartTotal == undefined ? <p></p> : <p className="cart-total">{cartTotal}</p>}
                       </Link>
                     </li>
 

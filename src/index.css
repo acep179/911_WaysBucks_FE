@@ -159,6 +159,19 @@ a{
   border-radius: 10px;
 }
 
+.cart-total{
+  width: 15px;
+  aspect-ratio: 1/1;
+  position: absolute;
+  top: 4px;
+  right: -2px;
+  font-size: 10px;
+  text-align: center;
+  color: white;
+  background-color: var(--color-pri);
+  border-radius: 50%;
+}
+
 /*. Form */
 
 .input-file-red{
@@ -178,6 +191,8 @@ a{
   border-left: none;
   cursor: pointer;
 }
+
+
 
 /*. Checkbox */
 /* The toping-checkbox */

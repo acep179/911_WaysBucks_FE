@@ -1,7 +1,7 @@
 import {React, useContext} from "react";
 import { Routes, Route } from "react-router-dom";
 
-import { Navbar, PrivateRoute } from './components'
+import { PrivateRoute } from './components'
 import { UserContext } from "./context/userContext";
 import { Home, AddProductAdmin, AddTopingAdmin, Cart, DetailProduct, IncomeTransactionAdmin, Profile } from './pages'
 
@@ -12,8 +12,6 @@ function App() {
   let isAdmin = state.user[0].status === "admin" ? true : false
 
   return (
-    <>
-      <Navbar />
       <Routes>
         <Route path="/" element={ isLogin ? (isAdmin ? <IncomeTransactionAdmin/> : <Home />) : <Home/>} />
         <Route exact path="/" element={<PrivateRoute />}>
@@ -24,7 +22,6 @@ function App() {
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
-    </>
   );
 }
 

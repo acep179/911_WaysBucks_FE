@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { AuthModal } from '../components'
+import { AuthModal, Navbar } from '../components'
 
 import heroBg from './../assets/img/hero-bg.jpg'
 import heroImg from './../assets/img/food.png'
@@ -31,6 +31,7 @@ function Home() {
 
   return (
     <div className='container'>
+      <Navbar />
       <AuthModal />
       <header className='mb-5' style={{ marginTop: 90 }}>
         <div className='mx-auto position-relative' style={{ width: '90%' }}>

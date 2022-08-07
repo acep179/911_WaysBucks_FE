@@ -3,10 +3,12 @@ import React from 'react'
 import transactionData from './../fakeData/transactionData'
 
 import bin from './../assets/img/bin.png'
+import { Navbar } from '../components'
 
 function Cart() {
   return (
     <div className='container d-flex justify-content-center'>
+      <Navbar />
       <div className='text-red' style={{ marginTop: 90, width: '90%' }}>
         <h3 >My Cart</h3>
         <div className='row justify-content-between'>

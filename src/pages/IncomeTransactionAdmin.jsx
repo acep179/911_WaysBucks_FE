@@ -1,7 +1,7 @@
 import React from 'react'
 
 import transactionData from './../fakeData/transactionData'
-import { TransactionCard } from '../components'
+import { Navbar, TransactionCard } from '../components'
 
 import incomeTransactionData from './../fakeData/incomeTransactionData'
 
@@ -9,6 +9,8 @@ import incomeTransactionData from './../fakeData/incomeTransactionData'
 function IncomeTransactionAdmin() {
   return (
     <div className='container d-flex justify-content-center'>
+
+      <Navbar />
 
       <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
