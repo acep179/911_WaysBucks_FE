@@ -7,7 +7,7 @@ function TransactionCard(props) {
 
   console.log(props.product)
   return (
-    <div class="card mb-3 bg-pink" style={{ maxWidth: 540 }}>
+    <div class="card bg-pink" style={{ maxWidth: 540, marginBottom: props.mb }}>
       <div class="row g-0 pt-3 px-3">
 
         <div class="col-md-8">

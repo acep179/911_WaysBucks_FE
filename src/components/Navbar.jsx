@@ -46,7 +46,6 @@ function Navbar() {
                     </div>
                     <div className="dropdown-menu">
                       <div className="menu-drop" style={{ width: 300 }}>
-
                         <div>
                           <Link to='add-product' className="d-flex align-items-center p-3">
                             <img src={userIcon} alt="profile icon" />
