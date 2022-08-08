@@ -8,10 +8,9 @@ function AddProductAdmin() {
   return (
     <div className='container d-flex justify-content-center'>
       <Navbar />
-      <div className='row justify-content-between' style={{ marginTop: 90, width: '90%' }}>
-        <AddForm name='Product' />
-        <img className='col-5' src={kopi} alt="Add Product" />
-      </div>
+
+      <AddForm name='Product' img={kopi} />
+
     </div>
   )
 }

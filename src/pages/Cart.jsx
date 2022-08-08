@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import transactionData from './../fakeData/transactionData'
-
 import bin from './../assets/img/bin.png'
+
 import { Navbar } from '../components'
 import { CartContext } from '../context/cartContext'
 
@@ -50,7 +50,7 @@ function Cart() {
             {transactionData.map((item) => {
               return (
 
-                <div className='cart row h-50 pt-3 mb-4'>
+                <div className='cart row pt-3 mb-4'>
 
                   {item.product.map((product) => {
                     return (

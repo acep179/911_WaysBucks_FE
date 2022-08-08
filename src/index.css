@@ -184,24 +184,18 @@ div.thanks-message{
 /*. Form */
 
 .input-file-red{
-  background-color: rgba(224, 200, 200, 0.25);
-  border-top: solid 3px var(--color-pri);
-  border-bottom: solid 3px var(--color-pri);
-  border-left: solid 3px var(--color-pri);
-  border-right: none;
-  color:rgba(104, 50, 50, 0.5);
+  display: none;
 }
 
 .label-file{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   background-color: rgba(224, 200, 200, 0.25);
-  border-top: solid 3px var(--color-pri);
-  border-bottom: solid 3px var(--color-pri);
-  border-right: solid 3px var(--color-pri);
-  border-left: none;
+  border: solid 3px var(--color-pri);
   cursor: pointer;
+  color: rgba(104, 50, 50, 0.5);
 }
-
-
 
 /*. Checkbox */
 /* The toping-checkbox */
