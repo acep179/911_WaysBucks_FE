@@ -7,12 +7,13 @@ import logo from "../assets/img/waysbuck_logo.png"
 import iconCart from "./../assets/img/cart_icon.png"
 import userIcon from "./../assets/img/user_icon.png"
 import logoutIcon from "./../assets/img/logout_icon.png"
+import { CartContext } from "../context/cartContext"
 
 
-function Navbar(props) {
+function Navbar() {
 
+  const [cart] = useContext(CartContext)
   const [state, dispatch] = useContext(UserContext)
-  let [cartTotal, setCartTotal] = useState()
 
   const isLogin = state.isLogin
   const isAdmin = state.user[0].status === 'admin' ? true : false
@@ -22,12 +23,6 @@ function Navbar(props) {
       type: 'LOGOUT'
     })
   }
-
-  useEffect(() => {
-    setCartTotal(props.cartNum)
-  }, [props])
-
-  console.log(cartTotal)
 
   return (
     <div>
@@ -74,7 +69,7 @@ function Navbar(props) {
                     <li className="nav-item cursor-pointer">
                       <Link className="position-relative" to="/cart">
                         <img src={iconCart} alt="cart" />
-                        {cartTotal === undefined ? <p></p> : <p className="cart-total">{cartTotal}</p>}
+                        {cart === undefined ? <p></p> : <p className="cart-total">{cart}</p>}
                       </Link>
                     </li>
 

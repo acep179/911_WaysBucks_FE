@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import transactionData from './../fakeData/transactionData'
 
 import bin from './../assets/img/bin.png'
 import { Navbar } from '../components'
+import { CartContext } from '../context/cartContext'
 
 function Cart() {
+
+  const [cart, setCart] = useContext(CartContext)
 
   const navigate = useNavigate()
   let modalClose
@@ -15,6 +18,7 @@ function Cart() {
   })
 
   const handleModal = () => {
+    setCart(0)
     modalClose.click()
     navigate('/')
   }

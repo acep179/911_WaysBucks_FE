@@ -1,9 +1,10 @@
-import { React, useState } from 'react'
+import { React, useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import productsData from './../fakeData/productsData'
 import topingData from '../fakeData/topingData'
 import { Navbar } from '../components'
+import { CartContext } from '../context/cartContext'
 
 
 const topingPrice = [0, 0, 0, 0, 0, 0, 0, 0]
@@ -15,7 +16,7 @@ function DetailProduct() {
     return item.id === Number(id)
   })
 
-  let [cart, setCart] = useState(0)
+  let [cart, setCart] = useContext(CartContext)
   let [price, setPrice] = useState([0, 0, 0, 0, 0, 0, 0, 0])
   let [totalPrice, setTotalPrice] = useState(product[0].price)
 
@@ -50,7 +51,7 @@ function DetailProduct() {
 
   return (
     <div>
-      <Navbar cartNum={cart} />
+      <Navbar />
       <div className='container d-flex justify-content-center'>
         <div className='row' style={{ marginTop: 90, width: '90%' }}>
           <img className='col-5' src={product[0]?.img} alt={product[0]?.name} />
