@@ -1,4 +1,5 @@
 import React from 'react'
+import convertRupiah from 'rupiah-format'
 
 import transactionData from './../fakeData/transactionData'
 import { Navbar, TransactionCard } from '../components'
@@ -53,7 +54,7 @@ function IncomeTransactionAdmin() {
                   <td>{item.name}</td>
                   <td>{item.address}</td>
                   <td>{item.postCode}</td>
-                  <td className='text-primary'>{item.income}</td>
+                  <td className='text-primary'>{convertRupiah.convert(item.income)}</td>
                   <td className={`text-${item.status === 'Waiting Approve' ? 'warning' :
                     item.status === 'Success' ? 'success' :
                       item.status === 'Cancel' ? 'danger' : 'info'

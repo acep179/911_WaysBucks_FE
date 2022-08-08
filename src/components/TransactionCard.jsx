@@ -1,4 +1,5 @@
 import React from 'react'
+import convertRupiah from 'rupiah-format'
 
 import logo from './../assets/img/waysbuck_logo.png'
 import qrDummy from './../assets/img/qr-dummy.png'
@@ -30,7 +31,7 @@ function TransactionCard(props) {
                             return ` ${item.name}, `
                           })}
                           .</p>
-                        <p className='text-brown'>Price: {item.price}</p>
+                        <p className='text-brown'>Price: {convertRupiah.convert(item.price)}</p>
                       </small>
                     </div>
                   </div>
@@ -45,8 +46,8 @@ function TransactionCard(props) {
         <div className="col-md-4 d-flex flex-column align-items-center justify-content-center">
           <img src={logo} className="img-fluid rounded-start mb-3" alt="Logo Waysbuck" />
           <img src={qrDummy} className="img-fluid rounded-start mb-3" alt="QR Code" />
-          <p>{props.status}</p>
-          <p>Sub Total: {props.subTotal}</p>
+          <p className='text-info bg-info bg-opacity-10 px-2'>{props.status}</p>
+          <p>Sub Total: {convertRupiah.convert(props.subTotal)}</p>
         </div>
 
       </div>

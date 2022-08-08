@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import convertRupiah from 'rupiah-format'
 
 import { AuthModal, Navbar } from '../components'
 
@@ -59,7 +60,7 @@ function Home() {
                     <div>
                       <h5 className="card-title mb-2 text-red">{item.name}</h5>
                     </div>
-                    <p className="card-text mb-2">{item.price}</p>
+                    <p className="card-text mb-2">{convertRupiah.convert(item.price)}</p>
                   </div>
                 </div>
               </div>

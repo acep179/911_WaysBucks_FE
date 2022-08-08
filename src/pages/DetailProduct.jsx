@@ -1,5 +1,6 @@
 import { React, useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import convertRupiah from 'rupiah-format'
 
 import productsData from './../fakeData/productsData'
 import topingData from '../fakeData/topingData'
@@ -57,7 +58,7 @@ function DetailProduct() {
           <img className='col-5' src={product[0]?.img} alt={product[0]?.name} />
           <div className='col-7 text-red'>
             <h1 >{product[0]?.name}</h1>
-            <p>{product[0]?.price}</p>
+            <p>{convertRupiah.convert(product[0]?.price)}</p>
             <form onSubmit={(e) => handleSubmit(e)}>
               <div>
                 <h5>Toping</h5>
@@ -77,7 +78,7 @@ function DetailProduct() {
               </div>
               <div className='d-flex justify-content-between'>
                 <h5>Total</h5>
-                <h5>{totalPrice}</h5>
+                <h5>{convertRupiah.convert(totalPrice)}</h5>
               </div>
               <div className='d-grid gap-2'>
                 <button className='btn btn-red d-grid gap-2'>Add Cart</button>

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import convertRupiah from 'rupiah-format'
 
 import transactionData from './../fakeData/transactionData'
 import bin from './../assets/img/bin.png'
@@ -67,7 +68,7 @@ function Cart() {
                           </p>
                         </div>
                         <div className='col-2 text-end d-flex flex-column justify-content-evenly align-items-end'>
-                          <p className='m-0'>{product.price}</p>
+                          <p className='m-0'>{convertRupiah.convert(product.price)}</p>
                           <img className='cursor-pointer' src={bin} alt='erase' style={{ height: 20 }} />
                         </div>
                       </div>
@@ -89,14 +90,14 @@ function Cart() {
                 </div>
 
                 <div className='d-flex flex-column'>
-                  <p className='mb-2'>69.000</p>
+                  <p className='mb-2'>{convertRupiah.convert(69.000)}</p>
                   <p className='mb-2'>2</p>
                 </div>
               </div>
 
               <div className='d-flex justify-content-between'>
                 <p>Total</p>
-                <p>69.000</p>
+                <p>{convertRupiah.convert(69.000)}</p>
               </div>
 
             </div>
