@@ -1,4 +1,4 @@
-import { React, useContext, useState } from 'react'
+import { React, useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/userContext';
 
 import userData from './../fakeData/userData'
@@ -8,13 +8,17 @@ function AuthModal() {
   const [state, dispatch] = useContext(UserContext)
   const [message, setMessage] = useState(null)
 
+  let closeModal
+
+  useEffect(() => {
+    closeModal = document.getElementById('closeModal')
+  })
+
   //. Login 
   const [formLogin, setFormLogin] = useState({
     loginEmail: '',
     loginPassword: '',
   });
-
-  const { loginEmail, loginPassword } = formLogin;
 
   const handleChangeLogin = (e) => {
     setFormLogin({
@@ -23,11 +27,13 @@ function AuthModal() {
     });
   };
 
+  const { loginEmail, loginPassword } = formLogin;
+
   const handleSubmitLogin = (e) => {
     e.preventDefault()
 
     let response = userData.filter((item) => {
-      return item.email === formLogin.loginEmail
+      return item.email === loginEmail
     })
 
     if (response.length === 0) {
@@ -36,7 +42,7 @@ function AuthModal() {
           Email Belum Terdaftar!
         </div>
       )
-    } else if (response[0].password === formLogin.loginPassword) {
+    } else if (response[0].password === loginPassword) {
       response = {
         status: 'success',
         user: response
@@ -60,14 +66,35 @@ function AuthModal() {
         loginPassword: '',
       })
 
+      closeModal.click()
       console.log(state)
     }
 
   }
 
-  // const register = {
 
-  // }
+  //. Register 
+
+  const [formRegister, setFormRegister] = useState({
+    registerName: '',
+    registerEmail: '',
+    registerPassword: '',
+  });
+
+  const handleChangeRegister = (e) => {
+    setFormRegister({
+      ...formRegister,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmitRegister = (e) => {
+    e.preventDefault()
+
+    userData.push(formRegister)
+  }
+
+
 
   return (
     <div>
@@ -75,6 +102,7 @@ function AuthModal() {
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-body">
+              <div data-bs-dismiss="modal" id='closeModal'></div>
               {message && message}
               <h1 className="modal-title text-red bold mb-4" id="login">Login</h1>
 
@@ -86,7 +114,7 @@ function AuthModal() {
                   <input type="password" className="form-control input-red" id="loginPassword" name="loginPassword" value={loginPassword} onChange={handleChangeLogin} placeholder="Password" />
                 </div>
                 <div className="d-grid gap-2 mb-3">
-                  <button className="btn btn-red" data-bs-dismiss="modal">Login</button>
+                  <button className="btn btn-red">Login</button>
                 </div>
               </form>
 
@@ -102,15 +130,15 @@ function AuthModal() {
             <div className="modal-body">
               <h1 className="modal-title text-red bold mb-4" id="register">Register</h1>
 
-              <form id="register" >
+              <form id="register" onSubmit={(e) => handleSubmitRegister(e)} >
                 <div className="mb-3">
-                  <input type="email" className="form-control input-red" id="registerEmail" name="registerEmail" placeholder="Email" />
+                  <input type="text" onChange={handleChangeRegister} className="form-control input-red" id="registerName" name="registerName" placeholder="Full Name" />
                 </div>
                 <div className="mb-3">
-                  <input type="password" className="form-control input-red" id="registerPassword" name="registerPassword" placeholder="Password" />
+                  <input type="email" onChange={handleChangeRegister} className="form-control input-red" id="registerEmail" name="registerEmail" placeholder="Email" />
                 </div>
                 <div className="mb-3">
-                  <input type="text" className="form-control input-red" id="registerName" name="registerName" placeholder="Full Name" />
+                  <input type="password" onChange={handleChangeRegister} className="form-control input-red" id="registerPassword" name="registerPassword" placeholder="Password" />
                 </div>
                 <div className="d-grid gap-2 mb-3">
                   <button className="btn btn-red" type="button">Register</button>

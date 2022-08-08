@@ -74,7 +74,7 @@ function Navbar(props) {
                     <li className="nav-item cursor-pointer">
                       <Link className="position-relative" to="/cart">
                         <img src={iconCart} alt="cart" />
-                        {cartTotal == undefined ? <p></p> : <p className="cart-total">{cartTotal}</p>}
+                        {cartTotal === undefined ? <p></p> : <p className="cart-total">{cartTotal}</p>}
                       </Link>
                     </li>
 

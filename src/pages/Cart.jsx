@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 import transactionData from './../fakeData/transactionData'
 
@@ -6,13 +7,26 @@ import bin from './../assets/img/bin.png'
 import { Navbar } from '../components'
 
 function Cart() {
+
+  const navigate = useNavigate()
+  let modalClose
+  useEffect(() => {
+    modalClose = document.getElementById('modalClose')
+  })
+
+  const handleModal = () => {
+    modalClose.click()
+    navigate('/')
+  }
+
   return (
     <div className='container d-flex justify-content-center'>
       <Navbar />
       <div className='text-red' style={{ marginTop: 90, width: '90%' }}>
 
-        <div class="modal fade" id="thanksModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div onClick={handleModal} class="modal fade" id="thanksModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div data-bs-dismiss="modal" id='modalClose'></div>
+          <div onClick={handleModal} class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content thanks-message">
 
               <div class="modal-body">
