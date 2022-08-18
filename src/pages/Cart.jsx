@@ -21,7 +21,7 @@ function Cart() {
   const handleModal = () => {
     setCart(0)
     modalClose.click()
-    navigate('/')
+    navigate('/profile')
   }
 
   return (
