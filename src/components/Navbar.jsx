@@ -16,7 +16,7 @@ function Navbar() {
   const [state, dispatch] = useContext(UserContext)
 
   const isLogin = state.isLogin
-  const isAdmin = state.user[0].status === 'admin' ? true : false
+  const isAdmin = state.user.status === 'admin' ? true : false
 
   const logout = () => {
     dispatch({
@@ -41,7 +41,7 @@ function Navbar() {
 
                 {isAdmin ? (
                   <li className="nav-item dropdown">
-                    <div role="button" className="rounded-circle nav-photo ms-3" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundImage: `url(${state.user[0].photo})` }}>
+                    <div role="button" className="rounded-circle nav-photo ms-3" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundImage: `url(${state.user.profile.image})` }}>
                     </div>
                     <div className="dropdown-menu">
                       <div className="menu-drop" style={{ width: 300 }}>
@@ -74,7 +74,7 @@ function Navbar() {
                     </li>
 
                     <li className="nav-item dropdown">
-                      <div role="button" className="rounded-circle nav-photo ms-3" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundImage: `url(${state.user[0].photo})` }}>
+                      <div role="button" className="rounded-circle nav-photo ms-3" data-bs-toggle="dropdown" aria-expanded="false" style={{ backgroundImage: `url(${state.user.profile.image})` }}>
                       </div>
                       <div className="dropdown-menu">
 

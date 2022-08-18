@@ -9,8 +9,9 @@ function App() {
 
   const [state] = useContext(UserContext)
   let isLogin = state.isLogin
-  let isAdmin = state.user[0].status === "admin" ? true : false
+  let isAdmin = state.user.status === "admin" ? true : false
 
+  console.log(state)
   return (
       <Routes>
         <Route path="/" element={ isLogin ? (isAdmin ? <IncomeTransactionAdmin/> : <Home />) : <Home/>} />

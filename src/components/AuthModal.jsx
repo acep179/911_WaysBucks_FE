@@ -1,5 +1,7 @@
 import { React, useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/userContext';
+import { useMutation } from 'react-query';
+import { API } from '../config/api';
 
 import userData from './../fakeData/userData'
 
@@ -29,48 +31,63 @@ function AuthModal() {
 
   const { loginEmail, loginPassword } = formLogin;
 
-  const handleSubmitLogin = (e) => {
-    e.preventDefault()
+  const handleSubmitLogin = useMutation(async (e) => {
+    try {
 
-    let response = userData.filter((item) => {
-      return item.email === loginEmail
-    })
+      e.preventDefault()
 
-    if (response.length === 0) {
-      setMessage(
-        <div className="alert alert-danger" role="alert">
-          Email Belum Terdaftar!
-        </div>
-      )
-    } else if (response[0].password === loginPassword) {
-      response = {
-        status: 'success',
-        user: response
+      // let response = userData.filter((item) => {
+      //   return item.email === loginEmail
+      // })
+
+      // if (response.length === 0) {
+      //   setMessage(
+      //     <div className="alert alert-danger" role="alert">
+      //       Email Belum Terdaftar!
+      //     </div>
+      //   )
+      // } else if (response[0].password === loginPassword) {
+      //   response = {
+      //     status: 'success',
+      //     user: response
+      //   }
+      // } else {
+      //   setMessage(
+      //     <div className="alert alert-danger" role="alert">
+      //       Password Salah!
+      //     </div>
+      //   )
+      // }
+
+      const config = {
+        headers: {
+          'Content-type': 'application/json',
+        },
+      };
+
+      const body = JSON.stringify(formLogin);
+      const response = await API.post('/login', body, config);
+
+      if (response?.status === 200) {
+
+        dispatch({
+          type: 'LOGIN_SUCCESS',
+          payload: response.data.data,
+        });
+
+        closeModal.click()
       }
-    } else {
-      setMessage(
+
+    } catch (error) {
+      const alert = (
         <div className="alert alert-danger" role="alert">
-          Password Salah!
+          Login failed, {error.response.data.message}
         </div>
-      )
+      );
+      setMessage(alert);
     }
 
-    if (response.status === 'success') {
-      dispatch({
-        type: "LOGIN_SUCCESS",
-        payload: response.user
-      })
-
-      setFormLogin({
-        loginEmail: '',
-        loginPassword: '',
-      })
-
-      closeModal.click()
-      console.log(state)
-    }
-
-  }
+  })
 
 
   //. Register 
@@ -106,7 +123,7 @@ function AuthModal() {
               {message && message}
               <h1 className="modal-title text-red bold mb-4" id="login">Login</h1>
 
-              <form onSubmit={(e) => handleSubmitLogin(e)}>
+              <form onSubmit={(e) => handleSubmitLogin.mutate(e)}>
                 <div className="mb-3">
                   <input type="email" className="form-control input-red" id="loginEmail" name="loginEmail" value={loginEmail} onChange={handleChangeLogin} placeholder="Email" />
                 </div>
