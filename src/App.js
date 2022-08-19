@@ -11,7 +11,6 @@ function App() {
   let isLogin = state.isLogin
   let isAdmin = state.user.status === "admin" ? true : false
 
-  console.log(state)
   return (
       <Routes>
         <Route path="/" element={ isLogin ? (isAdmin ? <IncomeTransactionAdmin/> : <Home />) : <Home/>} />

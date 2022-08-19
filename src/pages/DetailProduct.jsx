@@ -1,11 +1,12 @@
 import { React, useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useQuery } from 'react-query';
 import convertRupiah from 'rupiah-format'
 
-import productsData from './../fakeData/productsData'
 import topingData from '../fakeData/topingData'
 import { Navbar } from '../components'
 import { CartContext } from '../context/cartContext'
+import { API } from '../config/api';
 
 
 const topingPrice = [0, 0, 0, 0, 0, 0, 0, 0]
@@ -13,13 +14,14 @@ function DetailProduct() {
 
   const { id } = useParams()
 
-  const product = productsData.filter((item, index) => {
-    return item.id === Number(id)
-  })
+  let { data: product } = useQuery('productCache', async () => {
+    const response = await API.get(`/product/${id}`);
+    return response.data.data
+  });
 
   let [cart, setCart] = useContext(CartContext)
   let [price, setPrice] = useState([0, 0, 0, 0, 0, 0, 0, 0])
-  let [totalPrice, setTotalPrice] = useState(product[0].price)
+  let [totalPrice, setTotalPrice] = useState(product?.price)
 
   const handleOnChange = (e) => {
 
@@ -55,10 +57,10 @@ function DetailProduct() {
       <Navbar />
       <div className='container d-flex justify-content-center'>
         <div className='row' style={{ marginTop: 90, width: '90%' }}>
-          <img className='col-5' src={product[0]?.img} alt={product[0]?.name} />
+          <img className='col-5' src={product?.image} alt={product?.title} />
           <div className='col-7 text-red'>
-            <h1 >{product[0]?.name}</h1>
-            <p>{convertRupiah.convert(product[0]?.price)}</p>
+            <h1 >{product?.title}</h1>
+            <p>{convertRupiah.convert(product?.price)}</p>
             <form onSubmit={(e) => handleSubmit(e)}>
               <div>
                 <h5>Toping</h5>

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useQuery, useMutation } from 'react-query';
+import { useQuery } from 'react-query';
 import convertRupiah from 'rupiah-format'
 
 import { AuthModal, Navbar } from '../components'
@@ -16,20 +16,14 @@ function Home() {
   const [state] = useContext(UserContext)
   const navigate = useNavigate()
 
-  let loginButton
-
   //. Fetching product data from database
   let { data: products } = useQuery('productsCache', async () => {
     const response = await API.get('/products');
     return response.data.data
   });
 
-  useEffect(() => {
-    loginButton = document.getElementById('loginButton')
-  }, []);
-
-
   const detailProduct = (productId) => {
+    const loginButton = document.getElementById("loginButton")
     if (state.isLogin === true) {
       navigate(`/detail-product/${productId}`)
     } else {

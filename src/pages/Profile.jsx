@@ -15,12 +15,12 @@ function Profile() {
         <div className='col-5'>
           <h3 className='text-red mb-4'>My Profile</h3>
           <div className='row'>
-            <img className='col-5' src={state.user[0].photo} alt={state.user[0].name} />
+            <img className='col-5' src={state.user.profile.image} alt={state.user.fullName} />
             <div className='col-6'>
               <h5 className='mb-2 text-brown'>Full Name</h5>
-              <p>{state.user[0].name}</p>
+              <p>{state.user.fullName}</p>
               <h5 className='text-brown'>Email</h5>
-              <p>{state.user[0].email}</p>
+              <p>{state.user.email}</p>
             </div>
           </div>
         </div>
