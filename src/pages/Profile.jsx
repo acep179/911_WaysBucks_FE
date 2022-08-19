@@ -38,7 +38,7 @@ function Profile() {
               id={item?.id}
               date={item?.updated_at}
               status={item?.status}
-              subTotal={item?.subTotal}
+              subTotal={item?.amount}
               cart={item?.cart}
             />
           })}

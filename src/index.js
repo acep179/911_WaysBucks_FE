@@ -14,7 +14,7 @@ root.render(
   <React.StrictMode>
     <UserContextProvider>
       <CartContextProvider>
-      <QueryClientProvider client={client}>
+        <QueryClientProvider client={client}>
           <BrowserRouter>
             <App />
           </BrowserRouter>

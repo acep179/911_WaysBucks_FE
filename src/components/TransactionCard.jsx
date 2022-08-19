@@ -48,7 +48,7 @@ function TransactionCard(props) {
           <img src={logo} className="img-fluid rounded-start mb-3" alt="Logo Waysbuck" />
           <img src={qrDummy} className="img-fluid rounded-start mb-3" alt="QR Code" />
           <p className='text-info bg-info bg-opacity-10 px-2'>{props.status}</p>
-          <p>Sub Total: {convertRupiah.convert(69000)}</p>
+          <p>Sub Total: {convertRupiah.convert(props?.subTotal)}</p>
         </div>
 
       </div>
