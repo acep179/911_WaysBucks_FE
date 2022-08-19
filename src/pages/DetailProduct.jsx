@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query';
 import convertRupiah from 'rupiah-format'
 
-import topingData from '../fakeData/topingData'
+// import topingData from '../fakeData/topingData'
 import { Navbar } from '../components'
 import { CartContext } from '../context/cartContext'
 import { API } from '../config/api';
@@ -19,9 +19,25 @@ function DetailProduct() {
     return response.data.data
   });
 
+  let { data: toppings } = useQuery('toppingsCache', async () => {
+    const response = await API.get('/toppings');
+    return response.data.data
+  });
+
   let [cart, setCart] = useContext(CartContext)
   let [price, setPrice] = useState([0, 0, 0, 0, 0, 0, 0, 0])
   let [totalPrice, setTotalPrice] = useState(product?.price)
+
+  const total = (array) => {
+    let sum = 0;
+
+    array.forEach(item => {
+      sum += item;
+    });
+
+    sum += product.price
+    return sum;
+  }
 
   const handleOnChange = (e) => {
 
@@ -33,17 +49,6 @@ function DetailProduct() {
 
     setPrice(topingPrice)
     setTotalPrice(total(price))
-  }
-
-  const total = (array) => {
-    let sum = 0;
-
-    array.forEach(item => {
-      sum += item;
-    });
-
-    sum += product[0].price
-    return sum;
   }
 
   const handleSubmit = (e) => {
@@ -65,12 +70,12 @@ function DetailProduct() {
               <div>
                 <h5>Toping</h5>
                 <div className='row'>
-                  {topingData.map((item) => {
+                  {toppings?.map((item) => {
                     return (
-                      <label className='toping-checkbox col-3 d-flex flex-column align-items-center text-center mt-4 mb-2' key={item.id}>
-                        <input type="checkbox" name={item.name} id={item.id} onChange={handleOnChange} value={item.price} />
-                        <img className='mb-2' src={item.img} alt={item.name} width={75} />
-                        <p>{item.name}
+                      <label className='toping-checkbox col-3 d-flex flex-column align-items-center text-center mt-4 mb-2' key={item?.id}>
+                        <input type="checkbox" name={item?.title} id={item?.id} onChange={handleOnChange} value={item?.price} />
+                        <img className='mb-2' src={item?.image} alt={item?.title} width={75} />
+                        <p>{item?.title}
                         </p>
                         <span className='checkmark'></span>
                       </label>
