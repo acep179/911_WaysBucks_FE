@@ -1,20 +1,13 @@
-import { React, useContext, useEffect, useState } from 'react'
+import { React, useContext, useState } from 'react'
 import { UserContext } from '../context/userContext';
 import { useMutation } from 'react-query';
 import { API } from '../config/api';
-
-import userData from './../fakeData/userData'
 
 function AuthModal() {
 
   const [state, dispatch] = useContext(UserContext)
   const [message, setMessage] = useState(null)
 
-  let closeModal
-
-  useEffect(() => {
-    closeModal = document.getElementById('closeModal')
-  })
 
   //. Login 
   const [formLogin, setFormLogin] = useState({
@@ -33,31 +26,9 @@ function AuthModal() {
 
   const handleSubmitLogin = useMutation(async (e) => {
     try {
+      const closeModal = document.getElementById('closeModal')
 
       e.preventDefault()
-
-      // let response = userData.filter((item) => {
-      //   return item.email === loginEmail
-      // })
-
-      // if (response.length === 0) {
-      //   setMessage(
-      //     <div className="alert alert-danger" role="alert">
-      //       Email Belum Terdaftar!
-      //     </div>
-      //   )
-      // } else if (response[0].password === loginPassword) {
-      //   response = {
-      //     status: 'success',
-      //     user: response
-      //   }
-      // } else {
-      //   setMessage(
-      //     <div className="alert alert-danger" role="alert">
-      //       Password Salah!
-      //     </div>
-      //   )
-      // }
 
       const config = {
         headers: {
@@ -105,11 +76,44 @@ function AuthModal() {
     });
   };
 
-  const handleSubmitRegister = (e) => {
-    e.preventDefault()
+  const { registerName, registerEmail, registerPassword } = formRegister
 
-    userData.push(formRegister)
-  }
+  const handleSubmitRegister = useMutation(async (e) => {
+    try {
+      const toggleModal = document.getElementById("toggleModal")
+
+      e.preventDefault();
+
+      const config = {
+        headers: {
+          'Content-type': 'application/json',
+        },
+      };
+
+      const body = JSON.stringify(formRegister);
+      const response = await API.post('/register', body, config);
+
+      console.log(response)
+
+      toggleModal.click()
+
+      setFormRegister({
+        registerName: '',
+        registerEmail: '',
+        registerPassword: '',
+      })
+
+
+    } catch (error) {
+      const alert = (
+        <div className="alert alert-danger" role="alert">
+          Register failed, {error.response.data.message}
+        </div>
+      );
+      setMessage(alert);
+      console.log(error);
+    }
+  })
 
 
 
@@ -147,22 +151,22 @@ function AuthModal() {
             <div className="modal-body">
               <h1 className="modal-title text-red bold mb-4" id="register">Register</h1>
 
-              <form id="register" onSubmit={(e) => handleSubmitRegister(e)} >
+              <form id="register" onSubmit={(e) => handleSubmitRegister.mutate(e)} >
                 <div className="mb-3">
-                  <input type="text" onChange={handleChangeRegister} className="form-control input-red" id="registerName" name="registerName" placeholder="Full Name" />
+                  <input type="text" onChange={handleChangeRegister} className="form-control input-red" id="registerName" value={registerName} name="registerName" placeholder="Full Name" />
                 </div>
                 <div className="mb-3">
-                  <input type="email" onChange={handleChangeRegister} className="form-control input-red" id="registerEmail" name="registerEmail" placeholder="Email" />
+                  <input type="email" onChange={handleChangeRegister} className="form-control input-red" id="registerEmail" value={registerEmail} name="registerEmail" placeholder="Email" />
                 </div>
                 <div className="mb-3">
-                  <input type="password" onChange={handleChangeRegister} className="form-control input-red" id="registerPassword" name="registerPassword" placeholder="Password" />
+                  <input type="password" onChange={handleChangeRegister} className="form-control input-red" id="registerPassword" value={registerPassword} name="registerPassword" placeholder="Password" />
                 </div>
                 <div className="d-grid gap-2 mb-3">
-                  <button className="btn btn-red" type="button">Register</button>
+                  <button className="btn btn-red">Register</button>
                 </div>
               </form>
 
-              <p className="text-center">Already have an account? Click <strong className="cursor-pointer" data-bs-target="#login" data-bs-toggle="modal">Here</strong></p>
+              <p className="text-center">Already have an account? Click <strong id='toggleModal' className="cursor-pointer" data-bs-target="#login" data-bs-toggle="modal">Here</strong></p>
             </div>
           </div>
         </div>

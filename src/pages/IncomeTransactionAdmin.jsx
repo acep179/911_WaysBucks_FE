@@ -3,11 +3,7 @@ import { useQuery } from 'react-query';
 import { API } from '../config/api';
 import convertRupiah from 'rupiah-format'
 
-// import transactionData from './../fakeData/transactionData'
 import { Navbar, TransactionCard } from '../components'
-
-import incomeTransactionData from './../fakeData/incomeTransactionData'
-
 
 function IncomeTransactionAdmin() {
 
