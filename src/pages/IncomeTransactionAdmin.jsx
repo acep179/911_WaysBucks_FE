@@ -1,13 +1,24 @@
 import React from 'react'
+import { useQuery } from 'react-query';
+import { API } from '../config/api';
 import convertRupiah from 'rupiah-format'
 
-import transactionData from './../fakeData/transactionData'
+// import transactionData from './../fakeData/transactionData'
 import { Navbar, TransactionCard } from '../components'
 
 import incomeTransactionData from './../fakeData/incomeTransactionData'
 
 
 function IncomeTransactionAdmin() {
+
+  let { data: transactions } = useQuery('transactionsCache', async () => {
+    const response = await API.get('/transactions');
+    return response.data.data
+  });
+
+  console.log(transactions)
+
+
   return (
     <div className='container d-flex justify-content-center'>
 
@@ -18,12 +29,11 @@ function IncomeTransactionAdmin() {
           <div class="modal-content">
 
             <TransactionCard
-              id={transactionData[0].id}
-              day={transactionData[0].day}
-              date={transactionData[0].date}
-              status={transactionData[0].status}
-              subTotal={transactionData[0].subTotal}
-              product={transactionData[0].product}
+              id={transactions[0]?.id}
+              date={transactions[0]?.updated_at}
+              status={transactions[0]?.status}
+              subTotal={transactions[0]?.amount}
+              cart={transactions[0]?.cart}
             />
 
           </div>
@@ -47,19 +57,19 @@ function IncomeTransactionAdmin() {
             </tr>
           </thead>
           <tbody>
-            {incomeTransactionData.map((item, index) => {
+            {transactions?.map((item, index) => {
               return (
                 <tr className='cursor-pointer' data-bs-toggle="modal" data-bs-target="#transactionModal" key={item.id}>
                   <td>{index + 1}</td>
-                  <td>{item.name}</td>
-                  <td>{item.address}</td>
-                  <td>{item.postCode}</td>
-                  <td className='text-primary'>{convertRupiah.convert(item.income)}</td>
-                  <td className={`text-${item.status === 'Waiting Approve' ? 'warning' :
-                    item.status === 'Success' ? 'success' :
-                      item.status === 'Cancel' ? 'danger' : 'info'
+                  <td>{item?.user?.fullName}</td>
+                  <td>{item?.user?.profile?.address}</td>
+                  <td>{item?.user?.profile?.postCode}</td>
+                  <td className='text-primary'>{convertRupiah.convert(item?.amount)}</td>
+                  <td className={`text-${item?.status === 'Waiting Approve' ? 'warning' :
+                    item?.status === 'Success' ? 'success' :
+                      item?.status === 'Cancel' ? 'danger' : 'info'
                     }`}>
-                    {item.status}
+                    {item?.status}
                   </td>
                 </tr>
               )
