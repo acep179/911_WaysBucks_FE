@@ -1,4 +1,5 @@
 import React from 'react'
+import dateFormat from 'dateformat';
 import convertRupiah from 'rupiah-format'
 
 import logo from './../assets/img/waysbuck_logo.png'
@@ -6,32 +7,32 @@ import qrDummy from './../assets/img/qr-dummy.png'
 
 function TransactionCard(props) {
 
-  console.log(props.product)
+  console.log(props)
   return (
     <div className="card bg-pink" style={{ maxWidth: 540, marginBottom: props.mb }}>
       <div className="row g-0 pt-3 px-3">
 
         <div className="col-md-8">
-          {props.product.map((item) => {
+          {props?.cart?.map((item) => {
             return (
               <div className="bg-pink" style={{ maxWidth: 540 }}>
                 <div className="row g-0 align-items-center mb-3">
 
                   <div className="col-md-4">
-                    <img src={item.img} className="img-fluid rounded-start" alt={item.name} />
+                    <img src={`http://localhost:5000/uploads/${item?.product?.image}`} className="img-fluid rounded-start" alt={item?.product?.title} />
                   </div>
 
                   <div className="col-md-8">
                     <div className="card-body text-red p-0 ps-3">
-                      <h5 className="card-title">{item.name}</h5>
+                      <h5 className="card-title">{item?.product?.name}</h5>
                       <small className='text-small'>
-                        <p className="card-text"><strong> {props.day}</strong> {props.date}</p>
+                        <p className="card-text"> {dateFormat(item?.updated_at, 'dddd, d mmmm yyyy')}</p>
                         <p className='mb-2'><span className='text-brown'>Toping:</span>
-                          {item.toping.map((item) => {
-                            return ` ${item.name}, `
+                          {item?.toppings?.map((item) => {
+                            return ` ${item?.title}, `
                           })}
                           .</p>
-                        <p className='text-brown'>Price: {convertRupiah.convert(item.price)}</p>
+                        <p className='text-brown'>Price: {convertRupiah.convert(item?.product?.price)}</p>
                       </small>
                     </div>
                   </div>
@@ -47,7 +48,7 @@ function TransactionCard(props) {
           <img src={logo} className="img-fluid rounded-start mb-3" alt="Logo Waysbuck" />
           <img src={qrDummy} className="img-fluid rounded-start mb-3" alt="QR Code" />
           <p className='text-info bg-info bg-opacity-10 px-2'>{props.status}</p>
-          <p>Sub Total: {convertRupiah.convert(props.subTotal)}</p>
+          <p>Sub Total: {convertRupiah.convert(69000)}</p>
         </div>
 
       </div>

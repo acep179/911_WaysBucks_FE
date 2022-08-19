@@ -1,10 +1,15 @@
 import React, { useContext } from 'react'
 import { Navbar, TransactionCard } from '../components'
 import { UserContext } from '../context/userContext'
-
-import transactionData from './../fakeData/transactionData'
+import { useQuery } from 'react-query';
+import { API } from '../config/api';
 
 function Profile() {
+
+  let { data: transactions } = useQuery('transactionsCache', async () => {
+    const response = await API.get('/transactions');
+    return response.data.data
+  });
 
   const [state] = useContext(UserContext)
 
@@ -27,15 +32,14 @@ function Profile() {
 
         <div className='col-7'>
           <h3 className='text-brown mb-4'>My Transaction</h3>
-          {transactionData.map((item) => {
+          {transactions?.map((item) => {
             return <TransactionCard
               mb='1rem'
-              id={item.id}
-              day={item.day}
-              date={item.date}
-              status={item.status}
-              subTotal={item.subTotal}
-              product={item.product}
+              id={item?.id}
+              date={item?.updated_at}
+              status={item?.status}
+              subTotal={item?.subTotal}
+              cart={item?.cart}
             />
           })}
 
