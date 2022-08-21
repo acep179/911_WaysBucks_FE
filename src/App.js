@@ -1,16 +1,22 @@
 import {React, useContext} from "react";
 import { Routes, Route } from "react-router-dom";
 
+import { setAuthToken } from "./config/api";
 import { PrivateRoute } from './components'
 import { UserContext } from "./context/userContext";
 import { Home, AddProductAdmin, AddTopingAdmin, Cart, DetailProduct, IncomeTransactionAdmin, Profile } from './pages'
 
-function App() {
 
+function App() {
+  
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  
   const [state] = useContext(UserContext)
   let isLogin = state.isLogin
   let isAdmin = state.user.status === "admin" ? true : false
-
+  
   return (
       <Routes>
         <Route path="/" element={ isLogin ? (isAdmin ? <IncomeTransactionAdmin/> : <Home />) : <Home/>} />

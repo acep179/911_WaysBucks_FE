@@ -25,11 +25,11 @@ function IncomeTransactionAdmin() {
           <div class="modal-content">
 
             <TransactionCard
-              id={transactions[0]?.id}
-              date={transactions[0]?.updated_at}
-              status={transactions[0]?.status}
-              subTotal={transactions[0]?.amount}
-              cart={transactions[0]?.cart}
+              id={transactions?.id}
+              date={transactions?.updated_at}
+              status={transactions?.status}
+              subTotal={transactions?.amount}
+              cart={transactions?.cart}
             />
 
           </div>
