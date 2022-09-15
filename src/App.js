@@ -6,8 +6,6 @@ import { PrivateRoute } from './components'
 import { UserContext } from "./context/userContext";
 import { Home, AddProductAdmin, AddTopingAdmin, Cart, DetailProduct, IncomeTransactionAdmin, Profile } from './pages'
 
-
-
 function App() {
   
   if (localStorage.token) {
@@ -47,7 +45,7 @@ function App() {
     if (localStorage.token) {
       checkUser();
     }
-  },);
+  },[]);
 
   let isLogin = state.isLogin
   let isAdmin = state.user.status === "admin" ? true : false

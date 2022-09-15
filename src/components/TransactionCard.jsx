@@ -18,7 +18,7 @@ function TransactionCard(props) {
                 <div className="row g-0 align-items-center mb-3">
 
                   <div className="col-md-4">
-                    <img src={`http://localhost:5000/uploads/${item?.product?.image}`} className="img-fluid rounded-start" alt={item?.product?.title} />
+                    <img src={`${item?.product?.image}`} className="img-fluid rounded-start" alt={item?.product?.title} />
                   </div>
 
                   <div className="col-md-8">

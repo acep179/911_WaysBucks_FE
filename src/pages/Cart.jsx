@@ -138,7 +138,7 @@ function Cart() {
                 return (
 
                   <div className='d-flex justify-content-between mb-3' key={cart?.id}>
-                    <div className='cart-image col-2' style={{ backgroundImage: `url(http://localhost:5000/uploads/${cart?.product?.image})` }}>
+                    <div className='cart-image col-2' style={{ backgroundImage: `url('${cart?.product?.image}')` }}>
                     </div>
                     <div className='col-8 d-flex flex-column justify-content-evenly align-items-start'>
                       <p className='m-0'>{cart?.product?.title}</p>

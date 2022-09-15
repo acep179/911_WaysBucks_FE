@@ -1,5 +1,5 @@
 import { React, useContext } from "react"
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { UserContext } from "../context/userContext"
 
@@ -12,6 +12,8 @@ import { API } from "../config/api"
 
 
 function Navbar() {
+
+  const navigate = useNavigate()
 
   const [state, dispatch] = useContext(UserContext)
 
@@ -31,6 +33,7 @@ function Navbar() {
     dispatch({
       type: 'LOGOUT'
     })
+    navigate("/") || window.location.reload()
   }
 
   return (
