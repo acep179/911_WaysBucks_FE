@@ -49,8 +49,16 @@ function Cart() {
         },
       };
 
+      let cartsID = '';
+
+      carts.forEach(item => {
+        let id = item.id
+        cartsID = cartsID + id.toString();
+      });
+
       const transactionInput = {
-        amount: totalAmount(carts)
+        amount: totalAmount(carts),
+        cartsID
       }
 
       const transactionBody = JSON.stringify(transactionInput)

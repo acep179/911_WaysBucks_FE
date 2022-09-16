@@ -24,7 +24,7 @@ function Profile() {
         <div className='col-5'>
           <h3 className='text-red mb-4'>My Profile</h3>
           <div className='row'>
-            <img className='col-5' src={state.user.profile.img} alt={state.user.fullName} />
+            <img className='col-5' src={state.user.profile.img ? state.user.profile.img : 'cloudinary'} alt={state.user.fullName} />
             <div className='col-6'>
               <h5 className='mb-2 text-brown'>Full Name</h5>
               <p>{state.user.fullName}</p>
@@ -36,17 +36,20 @@ function Profile() {
 
         <div className='col-7'>
           <h3 className='text-brown mb-4'>My Transaction</h3>
-          {transactions?.map((item) => {
-            return <TransactionCard
-              key={item?.id}
-              mb='1rem'
-              id={item?.id}
-              date={item?.updated_at}
-              status={item?.status}
-              subTotal={item?.amount}
-              cart={item?.cart}
-            />
-          })}
+
+          <div className='overflow-auto' style={{ height: "70vh" }}>
+            {transactions?.map((item) => {
+              return <TransactionCard
+                key={item?.id}
+                mb='1rem'
+                id={item?.id}
+                date={item?.updated_at}
+                status={item?.status}
+                subTotal={item?.amount}
+                cart={item?.cart}
+              />
+            })}
+          </div>
 
         </div>
 
